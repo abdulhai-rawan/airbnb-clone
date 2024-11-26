@@ -1,5 +1,6 @@
 "use client";
 
+import Categories from "./categories";
 import Container from "@/components/container";
 import Logo from "@/components/navbar/logo";
 import Search from "@/components/navbar/search";
@@ -20,6 +21,8 @@ const Navbar = () => {
           </div>
         </Container>
       </div>
+
+      <Categories />
     </div>
   );
 };

@@ -33,7 +33,7 @@ export const {
           throw new Error("Invalid credentials");
         }
 
-        const user = await db.user.findUnique({
+        const user = await db.user.findFirst({
           where: { email: credentials.email },
         });
 
@@ -42,7 +42,7 @@ export const {
         }
 
         const isCorrectPassword = await bcrypt.compare(
-          credentials.password,
+          credentials.password.toString(),
           user.hashedPassword
         );
 

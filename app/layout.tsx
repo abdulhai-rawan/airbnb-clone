@@ -4,6 +4,7 @@ import LoginModal from "@/components/modals/login-modal";
 import Navbar from "@/components/navbar/navbar";
 import { Nunito } from "next/font/google";
 import RegisterModal from "@/components/modals/register-modal";
+import RentModal from "@/components/modals/rent-modal";
 import { SessionProvider } from "next-auth/react";
 import ToasterProvider from "@/providers/toaster-provider";
 import { auth } from "@/auth";
@@ -30,6 +31,7 @@ export default async function RootLayout({
           <ToasterProvider />
           <RegisterModal />
           <LoginModal />
+          <RentModal />
           <Navbar />
           {children}
         </body>
