@@ -17,7 +17,7 @@ This project is a **Full Stack Airbnb Clone** built with **Next.js 15**, leverag
 
 ## Prerequisites  
 
-- **Node.js version 14.x or above**  
+- **Node.js version 15.x or above**  
 
 ---
 
@@ -26,7 +26,7 @@ This project is a **Full Stack Airbnb Clone** built with **Next.js 15**, leverag
 ### Cloning the Repository  
 
 ```bash
-git clone https://github.com/AntonioErdeljac/next13-airbnb-clone.git
+git clone https://github.com/abdulhai-rawan/airbnb-clone.git
 ```
 
 ### Install Dependencies  
