@@ -9,7 +9,7 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 
 const Navbar = () => {
   const user = useCurrentUser();
-  console.log(user);
+
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">

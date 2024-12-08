@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import ClientOnly from "@/components/client-only";
 import LoginModal from "@/components/modals/login-modal";
 import Navbar from "@/components/navbar/navbar";
 import { Nunito } from "next/font/google";
@@ -28,12 +29,14 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <body className={font.className}>
-          <ToasterProvider />
-          <RegisterModal />
-          <LoginModal />
-          <RentModal />
+          <ClientOnly>
+            <ToasterProvider />
+            <RegisterModal />
+            <LoginModal />
+            <RentModal />
+          </ClientOnly>
           <Navbar />
-          {children}
+          <div className="pb-20 pt-28">{children}</div>
         </body>
       </html>
     </SessionProvider>
