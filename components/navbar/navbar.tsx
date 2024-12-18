@@ -8,7 +8,7 @@ import UserMenu from "@/components/navbar/user-menu";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 const Navbar = () => {
-  const user = useCurrentUser();
+  // const user = useCurrentUser();
 
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">

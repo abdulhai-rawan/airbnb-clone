@@ -9,7 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import Heading from "../heading";
 import Input from "../inputs/input";
 import Modal from "./modal";
-import { createUser } from "@/actions/auth";
+import axios from "axios";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 import useLoginModal from "@/hooks/useLoginModal";
@@ -35,12 +35,15 @@ const RegisterModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    createUser({ name: data.name, email: data.email, password: data.password })
+    axios
+      .post("/api/register", data)
       .then(() => {
+        toast.success("Registered!");
         registerModal.onClose();
+        loginModal.onOpen();
       })
-      .catch(() => {
-        toast.error("Something went wrong.");
+      .catch((error) => {
+        toast.error(error);
       })
       .finally(() => {
         setIsLoading(false);

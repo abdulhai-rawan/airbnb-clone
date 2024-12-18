@@ -10,7 +10,6 @@ import Heading from "../heading";
 import Input from "../inputs/input";
 import Modal from "./modal";
 import axios from "axios";
-import { login } from "@/actions/auth";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 import useLoginModal from "@/hooks/useLoginModal";
@@ -37,17 +36,22 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    login({ email: data.email, password: data.password })
-      .then(() => {
-        setIsLoading(false);
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false);
 
+      if (callback?.ok) {
         toast.success("Logged in");
         router.refresh();
         loginModal.onClose();
-      })
-      .catch((error) => {
-        toast.error("Something went wrong.");
-      });
+      }
+
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
 
   const toggle = useCallback(() => {

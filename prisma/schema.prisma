@@ -8,27 +8,28 @@ datasource db {
 }
 
 model User {
-  id             String     @id @default(uuid())
+  id             String    @id @default(uuid())
   name           String?
-  email          String?    @unique
+  email          String?   @unique
   emailVerified  DateTime?
   image          String?
   hashedPassword String?
-  createdAt      DateTime   @default(now())
-  updatedAt      DateTime   @updatedAt
-  favorites      Favorite[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
+  favorites    Favorite[]
   accounts     Account[]
   listings     Listing[]
   reservations Reservation[]
 }
 
 model Favorite {
-  id        String  @id @default(uuid())
+  id        String @id @default(uuid())
   userId    String
   listingId String
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 
   @@unique([userId, listingId])
 }
